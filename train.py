@@ -87,9 +87,15 @@ if __name__ == "__main__":
 
     device = torch.device(CUDA_SELECT if torch.cuda.is_available() else "cpu")
     print(device)
+    if torch.cuda.is_available():
+        print(
+            f"GPU confirmed: {torch.cuda.get_device_name(0)} using device {device}"
+        )
+    else:
+        print("GPU not available; using CPU instead.")
     model = build_model(args.model_type)
 
-    if torch.cuda.device_count() > 2:           #本来是0
+    if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!")
         model = nn.DataParallel(model)
 
