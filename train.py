@@ -94,7 +94,7 @@ if __name__ == "__main__":
         model = nn.DataParallel(model)
 
     model = model.to(device)
-    #summary(model, input_size=(3, 512, 512), batch_size=args.batch_size, device="cpu")
+    summary(model, input_size=(3, 512, 512), batch_size=args.batch_size, device="cpu")
 
     epoch_start = "0"
     if args.use_pretrained:
