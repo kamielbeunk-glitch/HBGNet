@@ -77,12 +77,6 @@ if __name__ == "__main__":
 
     img_ids = [os.path.splitext(os.path.basename(p))[0] for p in train_file_names]
 
-    # CHeck correct file location!
-    print(f"Looking for files in: {os.path.abspath(args.train_path)}")
-    print(f"Directory exists: {os.path.exists(args.train_path)}")
-    print(f"Files found: {train_file_names}")
-    print(f"Number of files: {len(train_file_names)}")
-
     train_file, val_file = train_test_split(img_ids, test_size=0.2, random_state=41)  #
 
     device = torch.device(CUDA_SELECT if torch.cuda.is_available() else "cpu")
